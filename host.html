@@ -72,23 +72,7 @@
                 }
             </style>
         </div>
-        <script>
-            // Sidebar active state
-            document.querySelectorAll('.sidebar-menu li').forEach(item => {
-                item.addEventListener('click', function () {
-                    document.querySelectorAll('.sidebar-menu li').forEach(li => li.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-
-            // Show/hide main content sections
-            document.getElementById('profile-link').onclick = function (e) {
-                e.preventDefault();
-                document.getElementById('profile-section').style.display = 'block';
-                document.getElementById('bookings-section').style.display = 'none';
-                document.getElementById('settings-section').style.display = 'none';
-            };
-        </script>
+        
         <div class="main-content">
             <div class="main-content">
                 <div class="profile-section" id="profile-section" style="display: block;">
