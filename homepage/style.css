@@ -393,7 +393,7 @@ section{
   text-transform: uppercase;
 
 }
-/*slider*/
+/*slider teams*/
 .teams .home-slider .swiper-slide{
   overflow: hidden;
   border-radius: .5rem;
@@ -409,6 +409,41 @@ section{
   transform: scale(1.1);
   cursor: pointer;
 }
+/*teams*/
+
+/*expired events*/
+.expired{
+  text-align: center;
+  padding-bottom: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size:  4rem;
+}
+.expired span{
+   color: var(--main-color);
+  text-transform: uppercase;
+}
+.expired-event  .swiper-slide{
+  overflow: hidden;
+  border-radius: .5rem;
+  height: 50rem;
+  width: 35rem;
+}
+.expired-event .swiper-slide img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.expired-event .expired-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem,1fr));
+    gap: 1.5rem;
+}
+.expired-event .expired-container .swiper-slide:hover{
+  cursor:pointer;
+  transform: scale(1.1);
+}
+
 
 
 
