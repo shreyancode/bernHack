@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login paage</title>
+</head>
+<body>
+    <div class="loginbox">
+        <h2 style="font-family: Arial, Helvetica, sans-serif; ">Login</h2>
+        <label for="Username">Username</label>
+        <input type="text" name="Username" id="Username" placeholder="Enter your Name" required>
+        <br><br>
+         <label for="Password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required><br><br>
+        <input type="submit" value="Login">
+        <br><br>
+        <a href="forgot.html">Forgot Password</a>
+        <style>
+            .loginbox {
+                width: 700px;
+                padding: 50px;
+                background-color: #333;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                height: 500px;
+                margin: 50px auto;
+            }  
+            label {
+                color: white;
+                font-size: 15px;
+                align-items: center;
+                cursor: pointer;
+                text-align: center;
+            }
+            label:hover {
+                color: blue;
+            }
+        </style>
+        
+    </div>
+    <a href="signup.html" class="create-new-btn">
+        <button type="button" 
+        style="background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 50%;
+        text-align: center;
+        font-size: 16px;
+        height: 40px;
+        transition: background-color 0.3s ease;
+        
+        ">Create New Account</button>
+    </a>
+    <style>
+        .loginbox
+    </style>
+</body>
+</html>
