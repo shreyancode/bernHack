@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+</head>
+<body>
+    <div class="signupbox">
+        <h1 style="color: black ;">Sign Up</h1>
+        <label for="Username">Username</label><br>
+        <input type="text" class="Username" id="Username" placeholder="Username" required>
+        <br>
+        <label for="email">Email</label><br>
+        <input type="text" class="email" id="email" placeholder="Enter your email" required>
+        <br>
+        <label for="password">password</label><br>
+        <input type="password" class="password" id="" placeholder=""required>
+        <br>
+        <button type="submit">Sign In</button>
+        <style>
+            .signupbox {
+                width: 400px;
+                padding: 50px;
+                background-color: #f4f4f4;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                height: 500px;
+                margin: 50px auto;
+                align-items: center;
+                text-align: center;
+                text-decoration: none;
+            }
+            label {
+                color: black;
+                text-align: center;
+                font-size: 15px;
+                align-items: center;
+                cursor: pointer;
+            }
+            label:hover {
+                color: blue;
+            }
+            input {
+                width: 50%;
+                padding: 10px;
+                margin-top: 5px;
+                margin-bottom: 20px;
+            }
+            input[type="text"],
+            input[type="password"] {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                width: 70%;
+                box-sizing: border-box;
+            }
+            button {
+                background-color: blue;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 50%;
+                font-size: 16px;
+            }
+        </style>
+        <br><br><br><br><br>
+        <p>Already Have account?
+        <a href="login.html" style="font-size: medium; text-decoration: none; color: blue;">Login</a>
+   </p> </div>
+    
+</body>
+</html>
