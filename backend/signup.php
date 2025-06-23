@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO users(username,email,password) VALUES('$username','$email','$hashed_password')";
         $result = $conn->query($sql);
 
-        header("Location: login.php");
+        header("Location: /bernhack/frontend/login.html");
         exit();
 
     }

@@ -8,6 +8,51 @@
 </head>
 
 <body>
+    
+
+<form action="/bernhack/backend/host.php" method="POST">
+    <input type="text" name="title" placeholder="Event Title" required>
+    <textarea name="description" placeholder="Description"></textarea>
+    <input type="date" name="date" required>
+    <input type="time" name="time" required>
+    <input type="text" name="location" placeholder="Location" required>
+
+    <h3>Custom Form Fields</h3>
+    <div id="custom-fields"></div>
+    <button type="button" onclick="addField()">+ Add Field</button>
+
+    <br><br>
+    <button type="submit">Create Event</button>
+</form>
+
+<script>
+let fieldCount = 0;
+
+function addField() {
+    const container = document.getElementById("custom-fields");
+    const div = document.createElement('div');
+    div.classList.add('field-group');
+
+    div.innerHTML = `
+        <input type="text" name="labels[]" placeholder="Label" required>
+        <select name="types[]" required>
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="date">Date</option>
+            <option value="checkbox">Checkbox</option>
+        </select>
+        <label>
+            Required?
+            <input type="checkbox" name="is_req[${fieldCount}]">
+        </label>
+        <button type="button" onclick="this.parentElement.remove()">🗑 Remove</button>
+        <br><br>
+    `;
+    container.appendChild(div);
+    fieldCount++;
+}
+</script>
+
     <h1>
         Host Dashboard
         <style>
@@ -73,7 +118,7 @@
             </style>
         </div>
         <script>
-            // Sidebar active state
+        
             document.querySelectorAll('.sidebar-menu li').forEach(item => {
                 item.addEventListener('click', function () {
                     document.querySelectorAll('.sidebar-menu li').forEach(li => li.classList.remove('active'));
@@ -92,7 +137,7 @@
         <div class="main-content">
             <div class="main-content">
                 <div class="profile-section" id="profile-section" style="display: block;">
-                    <img src="image/pp.jpeg" alt="Profile">
+                    <img src="/bernhack/image/pp.jpeg" alt="Profile">
     
         <p><strong>Name:</strong>John</p>
         <p><strong>Email:</strong>John@gmail.com</p>
