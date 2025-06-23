@@ -333,10 +333,82 @@ section{
 .button input[type="button"]:hover{
   background-color: #111;
 }
+/*contact*/
 
+/*footer*/
+.footer{
+  background: #111;
+}
+.footer .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(27rem,1fr));
+  gap: 1.5rem;
+}
+.footer .box-container .box h3{
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  color: #fff;
 
+}
+.footer .box-container .box a{
+  display: block;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  color: #eee;
 
+}
+.footer .box-container .box a i{
+  padding-right: .5rem;
+  color: var(--main-color);
+}
+.footer .box-container .box a:hover i{
+  padding-right:1.5rem;
+  color: #fff;
+}
 
+.footer .credit{
+  text-align: center;
+  border-top: .1rem solid #222;
+  color: #fff;
+  padding: 2rem;
+  padding-top: 2.5rem;
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+.footer .credit span{
+  color: var(--main-color);
+}
+
+/*our teams*/
+.t4{
+   text-align: center;
+  padding-bottom: 2rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size:  4rem;
+}
+
+.t4 span{
+  color: var(--main-color);
+  text-transform: uppercase;
+
+}
+/*slider*/
+.teams .home-slider .swiper-slide{
+  overflow: hidden;
+  border-radius: .5rem;
+  height: 50rem;
+  width: 35rem;
+}
+.teams .home-slider .swiper-slide img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.service .box-container .box:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
 
 
 
@@ -364,10 +436,58 @@ section{
 @media (max-width:991px)
 {
   html{
-    font-size: 55%;
+  font-size: 55%;
+}
+.header{
+  padding: 1.5rem 2rem;
+}
+section{
+  padding: 2rem;
+}
+ .container{
+  width:90%;
+  padding: 30px 35px 40px 35px;
+}
+}
+@media (max-width:768px){
+  #menu-bars{
+    display: initial;
+}
+.header .navbar{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-top: .1rem solid #222;
+  background: #333;
+  clip-path: polygon(0 0,100% 0,100% 0, 0 0);
+}
+/*js -part*/
+.header .navbar.active{
+  clip-path: polygon(0 0,100% 0,100% 100%, 0 100%);
+}
+.fa-times{
+  transform: rotate(180deg);
+}
+/*js-part-end*/
+.header .navbar a{
+  display:flex;
+  background: #222;
+  border-radius: .5rem;
+  padding: 1.3rem;
+  margin: 1.3rem;
+  font-size: 2rem;
+}
+.home .content h3{
+  font-size: 4rem;
+}
+}
+@media(max-width:450)
+{
+  html{
+    font-size: 50%;
   }
-  .header{
-    padding:1.5rem 2rem;
+  .home .home-slider .swiper-slide{
+    width: 27rem;
   }
-
 }
