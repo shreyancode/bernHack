@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: /bernhack/backend/login.html");
+    exit;
+}
 include_once("./connectToDb.php");
 $conn=connect();
 $sql="select * from events where status='pending'";
