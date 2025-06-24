@@ -9,8 +9,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date = $_POST['date'];
     $location = $_POST['location'];
     $time = $_POST['time'];
-    $result = $conn->query("INSERT INTO events(user_id,title,description,date,time,location) values('$host_id','$title','$description','$date','$time','$location')");
+$target_dir = "../uploads/";
+$image_path = $target_dir . $_FILES["event_image"]["name"];
+    
+
+if (move_uploaded_file($_FILES["event_image"]["tmp_name"], $image_path)) {
+        $result = $conn->query("INSERT INTO events(user_id,title,description,date,time,location,image_path) values('$host_id','$title','$description','$date','$time','$location','$image_path')");
+
+}
+
    $event_id = $conn->insert_id;
+
 
  if (isset($_POST['labels']) && isset($_POST['types'])) {
         $labels = $_POST['labels'];

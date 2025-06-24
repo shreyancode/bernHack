@@ -1,7 +1,7 @@
 <?php
 include_once("./connectToDb.php");
 $conn=connect();
-$sql="select title,description from events where status='approved'";
+$sql="select title,description,image_path from events where status='approved'";
 $result=$conn->query($sql);
 $events=[];
 if($result->num_rows>0){
