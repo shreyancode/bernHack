@@ -1,0 +1,89 @@
+:root{
+  --main-color:#3867d6;
+}
+body{
+  background:#fff;
+
+}
+.heading{
+  text-align: center;
+  padding-bottom: 2rem;
+  color:#333;
+  text-transform: uppercase;
+  font-size:  4rem;
+}
+.heading span{
+   color: var(--main-color);
+  text-transform: uppercase;
+}
+.container{
+  width:55%;
+  background: #f4f4f4;
+  border-radius:6px ;
+  padding: 30px 60px 40px 40px;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-left: 239px;
+  margin-top: -30px;
+
+}
+.container .content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .content .right-side .topic-text{
+  font-size: 23px;
+  font-weight: 600;
+  color:var(--main-color);
+}
+.container .content .right-side  p{
+  font-size:15px;
+
+}
+.right-side .input-box{
+  height: 50px;
+  width: 100%;
+  margin: 12px 0;
+}
+.right-side  .input-box input{
+  height:100%;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding-left: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+.right-side  .input-box textarea{
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  padding-left: 15px;
+  background-color: #fff;
+  border-radius: 6px;
+  resize: none;
+}
+.right-side .message-box{
+ min-height: 110px;
+ 
+}
+
+.right-side .button{
+  margin-top: 6px;
+  display: inline-block;
+}
+.right-side .button input[type="button"]{
+  color: white;
+  font-size: 18px;
+  background: var(--main-color);
+  border-radius: 6px;
+  padding: 8px 16px;
+  border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.button input[type="button"]:hover{
+  background-color: #111;
+}
+/*contact*/
