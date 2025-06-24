@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
+    <title>Host Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
     <style>
@@ -117,6 +117,34 @@
 </head>
 
 <body>
+    
+<script>
+let fieldCount = 0;
+
+function addField() {
+    const container = document.getElementById("custom-fields");
+    const div = document.createElement('div');
+    div.classList.add('field-group');
+
+    div.innerHTML = `
+        <input type="text" name="labels[]" placeholder="Label" required>
+        <select name="types[]" required>
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="date">Date</option>
+            <option value="checkbox">Checkbox</option>
+        </select>
+        <label>
+            Required?
+            <input type="checkbox" name="is_req[${fieldCount}]">
+        </label>
+        <button type="button" onclick="this.parentElement.remove()">🗑 Remove</button>
+        <br><br>
+    `;
+    container.appendChild(div);
+    fieldCount++;
+}
+</script>
     <h1>Host Dashboard</h1>
 
     <div class="dashboard">
@@ -125,7 +153,6 @@
                 <li class="active"><a href="#" data-section="Profile">Profile</a></li>
                 <li><a href="#" data-section="create">Create Events</a></li>
                
-                <li><a href="#" data-section="feedback">Feedback</a></li>
                 
             </ul>
             <style>
@@ -155,10 +182,13 @@
         }
 
             </style>
+            
 
             <ul class="sidebar-log">
-                 <li><a href="index.html">View Event</a></li><br>
-                <li><a href="login.html">Logout</a></li>
+                <li><a href="/bernhack/homepage/feedback.html" data-section="feedback">Feedback</a></li><br>
+
+                 <li><a href="/bernhack/homepage/index.html">View Event</a></li><br>
+                <li><a href="/bernhack/backend/logout.php">Logout</a></li>
             </ul>
            
       
@@ -187,48 +217,46 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const menuItems = document.querySelectorAll('.sidebar-menu li');
-        const sections = document.querySelectorAll('.section');
+   <script>
+  const menuItems = document.querySelectorAll('.sidebar-menu li');
+const sections = document.querySelectorAll('.section');
 
-
-        function showSection(sectionId) {
-            sections.forEach(sec => {
-                sec.classList.remove('show');
-            });
-            const target = document.getElementById(sectionId);
-            if (target) {
-                target.classList.add('show');
-            }
-
-            if (sectionId === 'Analysis') {
-                const ctx = document.getElementById('myChart');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                        datasets: [{
-                            label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3],
-                            backgroundColor: '#ff914d',
-                            borderColor: '#ff914d',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-                chartInitialized = true;
-            }
+    function showSection(sectionId){
+        sections.forEach(sec=>{
+            sec.classList.remove('show');
         }
+        );
+        const target=document.getElementById(sectionId);
+        if(target){
+            target.classList.add('show');
+        }
+        if(sectionId==='create'){
+             const createSection = document.getElementById("create");
+    createSection.innerHTML =    `
+        
+           
+        
+<form action="" method="POST" enctype="multipart/form-data">
+        
+                    
+    <input type="text" name="title" placeholder="Event Title" required style="width: 300px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <textarea name="description" placeholder="Description" style="width: 500px; font-size: large; height: 70px; color: black; border-radius: 5px; border-color: #cacad7; border: #9099a6;"></textarea><br><br>
+    <input type="date" name="date" required style="width: 300px; height: 20px;font-size: medium; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <input type="time" name="time" required style="width: 300px; height: 20px; font-size: medium;color: black;border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <input type="text" name="location" placeholder="Location" required style="width: 300px; font-size: medium;height: 20px; color: black;border-radius: 5px; border-color: #f0f0f2;">
+<input type="file" name="event_image" accept="image/*">
+
+    <h3 style="color: black;">Custom Form Fields</h3>
+    <div id="custom-fields"></div>
+    <button type="button" onclick="addField()"  style="width: 150px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;">+ Add Field</button>
+
+    <br><br>
+    <button type="submit" onclick="message()" style="width: 300px; height: 30px; background-color: blue; color: black; border-radius: 5px; border-color: #f0f0f2;font-size: medium;">Create Event</button>
+</form>
+              `  
+           
+        }
+    }
 
         menuItems.forEach(item => {
             item.addEventListener('click', function (e) {
@@ -240,6 +268,12 @@
                 showSection(sectionId);
             });
         });
+        
+    </script>
+    <script>
+        function message(){
+            alert("event created");
+        }
     </script>
 </body>
 

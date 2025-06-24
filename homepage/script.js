@@ -1,18 +1,4 @@
-//for menu bar
-let menu = document.querySelector('#menu-bars');
-let navbar = document.querySelector('.navbar');
 
-menu.onclick = () =>{
-  menu.classList.toggle('fa-times');
-  navbar.classList.toggle('active');
-
-}
-//removes 3 line when entered into window mode
-window.onscroll = () =>{
-  menu.classList.remove('fa-times');
-  navbar.classList.remove('active');
-
-}
 //ended for header section
 //img swiper
 var swiper = new Swiper(".home-slider", {
@@ -33,6 +19,15 @@ var swiper = new Swiper(".home-slider", {
       disableOnInteraction: false,
     },
   });
+
+
+
+  ///profile drop down
+
+  let subMenu=document.getElementById("subMenu");
+  function toggleMenu(){
+    subMenu.classList.toggle("open-menu");
+  }
 
 
 

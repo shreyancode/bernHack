@@ -16,11 +16,11 @@ $conn = connect();
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
             if ($user['role'] === 'admin') {
-                header("location: admin.php");
+                header("location: /bernhack/frontend/admin1.html");
             exit();
 
             } elseif ($user['role'] === 'host') {
-                header("location: /bernhack/frontend/host.html");
+                header("location: /bernhack/frontend/host1.html");
             exit();
 
             } else {

@@ -31,5 +31,8 @@ else{
 $conn->query("insert into form_answers(submission_id,field_id,answer) values('$submission_id','$field_id','$answer')");
 
 }
-echo"succesfully  submitted";
+header('Content-Type: application/json');
+
+echo json_encode(["status" => "success", "message" => "Successfully submitted"]);
+
 ?>

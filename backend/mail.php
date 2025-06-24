@@ -28,8 +28,6 @@ try {
 
    
 
-    $subject = "Upcoming Event: Tech Conference 2025";
-    $body = "<h3>Hello!</h3><p>We’re excited to invite you to our upcoming event: <strong>Tech Conference 2025</strong>.<br>Date: July 5, 2025<br>Location: Kathmandu</p><p><a href='https://yourwebsite.com/events/123'>Click here to register</a></p><p>Best regards,<br>Event Team</p>";
 
     while ($row = $result->fetch_assoc()) {
         $mail->clearAllRecipients(); 

@@ -22,8 +22,31 @@
       <a href="#service">Services</a>
       <a href="#about">about</a>
       <a href="#contact">contact</a>
+      <a href="feedback.html">feedback</a>
+
     </nav>
-    <div id="menu-bars" class="fas fa-bars"></div>
+  <!--userprofile-->
+     <img src="profile.jpeg" class="user-pic" onclick="toggleMenu()">
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="submenu">
+          <div class="user-info">
+          <img src="profile.jpeg">
+          <h2>user name</h2>
+          </div>
+          <hr>
+           <a href="#" class="sub-menu-link">
+            <img src="setting.jpeg">
+            <p>Change Password</p>
+            <span>></span>
+          </a>
+           <a href="/bernhack/backend/logout.php" class="sub-menu-link">
+            <img src="logout.jpeg">
+            <p>Logout</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+    <!--userprofile-->
   </header>
   <!--header section ends-->
   <!--homesection start-->
@@ -44,31 +67,44 @@
   <!--home sectoinend-->
 <section class="expired-event">
   <h1 class="expired">expired<span>events</span></h1>
-  <div class="expired-container">
-   <div class="swiper-slide"><img src="slide-3.jpeg" alt="">
-            <div class="swiper-text">
-              <h5>Expired</h5>
-              <p>shresthashreyan5@gmail.com</p>
-            </div>
-            </div>
-            <!--2nd-->
-            <div class="swiper-slide"><img src="slide-4.jpeg" alt="">
-            <div class="swiper-text">
-              <h5>Expired</h5>
-              <p>shresthashreyan5@gmail.com</p>
-            </div>
-            </div>
-            <!--3rd-->
-            <div class="swiper-slide"><img src="slide-7.jpeg" alt="">
-            <div class="swiper-text">
-              <h5>Expired</h5>
-              <p>shresthashreyan5@gmail.com</p>
-            </div>
-            </div>
+  <div class="expired-container" id="expiredEventsContainer">
+
+
+
+
             </div>
 
 </section>
 
+<script>
+fetch("/bernhack/backend/get_expired_events.php")
+  .then(res => res.json())
+  .then(events => {
+    const container = document.getElementById("expiredEventsContainer");
+
+   
+
+    events.forEach(event => {
+      const card = document.createElement("div");
+      card.classList.add("expired-card");
+
+      card.innerHTML = `
+
+      <div class="expire">
+        <img src="${event.image_path}" alt="Event Image" />
+        </div>
+        <div class="expired-text">
+          <h5>${event.title} <span>(Expired)</span></h5>
+          <p>${event.description}</p>
+        </div>
+        
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  
+</script>
 
   <!--service section starts-->
   <section class="service" id="service">

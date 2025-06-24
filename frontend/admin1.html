@@ -125,10 +125,62 @@
                 <li class="active"><a href="#" data-section="Profile">Profile</a></li>
                 <li><a href="#" data-section="Analysis">Analysis</a></li>
                 <li><a href="#" data-section="Approve">Approvals</a></li>
-                <li><a href="#" data-section="Events">View Event</a></li>
-                <li><a href="#" data-section="Host">Make Host</a></li>
+               
             </ul>
+              <ul class="sidebar-eve">
+             <li><a href="/bernhack/homepage/index.html" data-section="Events">View Event</a></li>
+                </ul>
+                <ul class="sidebar-host">
+                     <li><a href="/bernhack/backend/makeHost.php" data-section="Host">Make Host</a></li>
+                </ul>
             <style>
+                  .sidebar-host{
+                     list-style: none;
+                     padding: 0;
+            
+                }
+                .sidebar-host li {
+            padding: 12px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.25s;
+            margin-top: -20px;
+        }
+        .sidebar-host li:hover,
+        .sidebar-host li.active {
+            background-color: #f0f0f2;
+            font-weight: 600;
+        }
+
+        .sidebar-host a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+                .sidebar-eve{
+                     list-style: none;
+                     padding: 0;
+            
+                }
+                .sidebar-eve li {
+            padding: 12px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.25s;
+            margin-top: -20px;
+        }
+        .sidebar-eve li:hover,
+        .sidebar-eve li.active {
+            background-color: #f0f0f2;
+            font-weight: 600;
+        }
+
+        .sidebar-eve a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
                 .sidebar-log{
                     list-style: none;
                      padding: 0;
@@ -157,7 +209,7 @@
             </style>
 
             <ul class="sidebar-log">
-                <li><a href="login.html">Logout</a></li>
+                <li><a href="/bernhack/backend/logout.php">Logout</a></li>
             </ul>
            
       
@@ -174,14 +226,14 @@
             <div id="Analysis" class="section">
                 <h2>Welcome to the Analysis</h2>
                 <div class="chart">
-                    <canvas id="myChart"></canvas>
+                    <canvas id="submissionsChart"></canvas>
                 </div>
             </div>
+<div id="Approve" class="section">
+    <h2>Pending Events</h2>
+    <div id="pending-events"></div>
+</div>
 
-            <div id="Approve" class="section">
-                <h2>Welcome to the Approvals</h2>
-                <p>Here you can manage all the approvals.</p>
-            </div>
 
             <div id="Events" class="section">
                 <h2>Event View</h2>
@@ -211,34 +263,62 @@
             if (target) {
                 target.classList.add('show');
             }
-
+    if (sectionId === 'Approve') {
+        fetch('/bernhack/backend/admin.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('pending-events').innerHTML = data;
+            })
+           
+    }
             if (sectionId === 'Analysis') {
-                const ctx = document.getElementById('myChart');
+                fetch("/bernhack/backend/get_chart_data.php")
+                .then(response => response.json())
+      .then(data => {
+        const titles = data.map(item => item.title);
+        const counts = data.map(item => item.submission_count);
+                const ctx = document.getElementById('submissionsChart');
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                             labels: titles,
+                       
                         datasets: [{
-                            label: '# of Votes',
-                            data: [12, 19, 3, 5, 2, 3],
+                            data: counts,
                             backgroundColor: '#ff914d',
                             borderColor: '#ff914d',
                             borderWidth: 1
                         }]
                     },
                     options: {
-                        responsive: true,
+                        
                         maintainAspectRatio: false,
                         scales: {
                             y: {
-                                beginAtZero: true
+                                beginAtZero: true,
+                                suggestedMax:10,
+                                ticks:{
+                                    stepSize:2
+                                },
+                                 title: {
+                  display: true,
+                  text: 'Number of Submissions'
                             }
+                        },
+                        x:{
+                           title: {
+                  display: true,
+                  text: 'Event Titles'
+                           }
+                        }
                         }
                     }
-                });
-                chartInitialized = true;
-            }
-        }
+                
+      });
+             
+            });
+        }  
+    }
 
         menuItems.forEach(item => {
             item.addEventListener('click', function (e) {

@@ -124,19 +124,92 @@ section{
   width: 100%;
   object-fit: cover;
 }
+.register-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.register-btn:hover {
+  background-color: #0056b3;
+}
+
 /*swiper-text*/
-.swiper-text{
+.swiper-container {
+  width: 100%;
+  height: 500px; /* adjust based on your design */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.swiper-wrapper {
+  height: 100%;
+}
+
+.swiper-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ✅ Make the image container fill the slide */
+.image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+/* ✅ Make the image scale properly */
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ✅ Overlay text on top of the image */
+.swiper-text {
   position: absolute;
   bottom: 30px;
   left: 30px;
+  z-index: 2;
   color: white;
   background: rgba(0, 0, 0, 0.5);
   padding: 15px;
-  margin: 15px;
+  border-radius: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 500px;
 }
-.swiper-text h5{
+
+.swiper-text h5 {
+  font-size: 3rem;
+  margin: 0 0 10px 0;
+}
+
+.swiper-text p {
   font-size: 2rem;
+  margin: 5px 0;
 }
+
+.swiper-text a {
+  display: inline-block;
+  font-size: 2rem;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.swiper-text a:hover {
+  background: #0056b3;
+}
+
 /*home page ended*/
 
 /*our service page*/
@@ -400,10 +473,18 @@ section{
   height: 50rem;
   width: 35rem;
 }
-.teams .home-slider .swiper-slide img{
-  height: 100%;
+.swiper-slide {
   width: 100%;
+  height: 50rem;
+  overflow: hidden;
+  border-radius: .5rem;
+  position: relative;
+}
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 .service .box-container .box:hover{
   transform: scale(1.1);
@@ -443,86 +524,136 @@ section{
   cursor:pointer;
   transform: scale(1.1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*media queries*/
-/*for navigation bar*/
-@media (max-width:991px)
-{
-  html{
-  font-size: 55%;
+.home .home-slider .swiper-slide{
+  overflow: hidden;
+  border-radius: .5rem;
+  height: 50rem;
+  width: 35rem;
 }
-.header{
-  padding: 1.5rem 2rem;
+.home .home-slider .swiper-slide img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
-section{
-  padding: 2rem;
+.expire {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
- .container{
-  width:90%;
-  padding: 30px 35px 40px 35px;
+
+.expire img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0;
 }
+
+.expired-text {
+  background-color: #f8f8f8;
+  padding: 16px;
+  border-radius: 0 0 12px 12px;
+  text-align: left;
 }
-@media (max-width:768px){
-  #menu-bars{
-    display: initial;
+
+.expired-text h5 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  color: #333;
 }
-.header .navbar{
+
+.expired-text h5 span {
+  font-size: 0.9rem;
+  color: #ff4d4d;
+  font-weight: normal;
+  margin-left: 6px;
+}
+
+.expired-text p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+/*profile*/
+/*for profilr*/
+.user-pic{
+  width:30px;
+  border-radius: 50%;
+  cursor:pointer;
+}
+.user-info h2{
+  color:#fff;
+  font-weight:500 ;
+}
+.sub-menu-wrap{
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
-  border-top: .1rem solid #222;
-  background: #333;
-  clip-path: polygon(0 0,100% 0,100% 0, 0 0);
+  right: 10%;
+  width: 320px;
+  max-height:0px;
+  transition: max-height 0.5s;
+  overflow: hidden;
+  /*aligned the margin*/
+   margin-right: -105px;
+
+  /*javascript remaining*/
 }
-/*js -part*/
-.header .navbar.active{
-  clip-path: polygon(0 0,100% 0,100% 100%, 0 100%);
+
+.sub-menu-wrap.open-menu{
+  max-height: 400px;
 }
-.fa-times{
-  transform: rotate(180deg);
+    
+.submenu{
+  background-color: #333;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
 }
-/*js-part-end*/
-.header .navbar a{
-  display:flex;
-  background: #222;
-  border-radius: .5rem;
-  padding: 1.3rem;
-  margin: 1.3rem;
-  font-size: 2rem;
+.user-info{
+  display: flex;
+  align-items: center;
 }
-.home .content h3{
-  font-size: 4rem;
+.user-info img{
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
+.submenu hr{
+
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background-color:#fff;
+  margin: 15px 0 10px;
+
 }
-@media(max-width:450)
-{
-  html{
-    font-size: 50%;
-  }
-  .home .home-slider .swiper-slide{
-    width: 27rem;
-  }
+.sub-menu-link{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color:#fff;
+  margin: 12px 0;
+}
+.sub-menu-link p{
+  width: 100%;
+  margin-top: 10px;
+}
+.sub-menu-link img{
+  width: 40px;
+  background-color:#e5e5e5;
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 15px;
+}
+.sub-menu-link span{
+  font-size:22px;
+  transition: transform 0.5s;
+
+
+}
+.user-pic{
+  margin-right: -80px;
 }

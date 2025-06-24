@@ -73,7 +73,7 @@ body{
   margin-top: 6px;
   display: inline-block;
 }
-.right-side .button input[type="button"]{
+.right-side .button {
   color: white;
   font-size: 18px;
   background: var(--main-color);
@@ -83,7 +83,51 @@ body{
   transition: all 0.3s ease;
   cursor: pointer;
 }
-.button input[type="button"]:hover{
+.button :hover{
   background-color: #111;
 }
+/* Style for rating dropdown */
+.rating-box {
+  margin: 15px 0;
+}
+
+.rating-box label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.rating-box select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.rating-box select:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+/* Style for button */
+.button {
+  background-color: #00bcd4;
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: #0097a7;
+}
+
 /*contact*/

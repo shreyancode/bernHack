@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>host dashboard</title>
+</head>
+
+<body>
+    
+
+
+
+<script>
+let fieldCount = 0;
+
+function addField() {
+    const container = document.getElementById("custom-fields");
+    const div = document.createElement('div');
+    div.classList.add('field-group');
+
+    div.innerHTML = `
+        <input type="text" name="labels[]" placeholder="Label" required>
+        <select name="types[]" required>
+            <option value="text">Text</option>
+            <option value="number">Number</option>
+            <option value="date">Date</option>
+            <option value="checkbox">Checkbox</option>
+        </select>
+        <label>
+            Required?
+            <input type="checkbox" name="is_req[${fieldCount}]">
+        </label>
+        <button type="button" onclick="this.parentElement.remove()">🗑 Remove</button>
+        <br><br>
+    `;
+    container.appendChild(div);
+    fieldCount++;
+}
+</script>
+
+
+    <h1>
+        Host Dashboard
+        <style>
+            body {
+                background-color: white;
+                color: black;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            h1 {
+                text-align: center;
+                margin-top: 20px;
+                color: #3867d6;
+            }
+        </style>
+    </h1>
+
+    <div style="display: flex; min-height: 100vh;">
+        <div class="sidebar">
+
+            <ul class="sidebar-menu">
+                <ul class="sidebar-menu">
+                    <li class="active"><a href="#" id="profile-link">Profile</a></li>
+                    <li><a href="#">Create Event</a></li>
+                   <li><a href="#">View Event</a></li>
+                   <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </ul>
+            <style>
+                .sidebar {
+                    width: 220px;
+                    height: 500px;
+                    background-color: #f4f4f4;
+                    padding: 25px 20px;
+                    box-shadow: 2px 0 12px rgba(0, 0, 0, .05);
+                    color: black;
+                }
+
+                .sidebar-menu {
+                    list-style: none;
+                    padding: 0;
+                }
+
+                .sidebar-menu a {
+                    text-decoration: none;
+                    color: inherit;
+                    display: block;
+                }
+
+                .sidebar-menu li {
+                    padding: 12px 14px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: background-color .25s;
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .sidebar-menu li:hover {
+                    background-color: #f0f0f2;
+                    font-weight: 600;
+                }
+            </style>
+        </div>
+        <script>
+        
+            document.querySelectorAll('.sidebar-menu li').forEach(item => {
+                item.addEventListener('click', function () {
+                    document.querySelectorAll('.sidebar-menu li').forEach(li => li.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Show/hide main content sections
+            document.getElementById('profile-link').onclick = function (e) {
+                e.preventDefault();
+                document.getElementById('profile-section').style.display = 'block';
+                document.getElementById('bookings-section').style.display = 'none';
+                document.getElementById('settings-section').style.display = 'none';
+            };
+        </script>
+        
+        <div class="main-content">
+            <div class="main-content">
+                <div class="profile-section" id="profile-section" style="display: block;">
+                    
+    
+       <form action="/bernhack/backend/host.php" method="POST" enctype="multipart/form-data">
+        
+                    
+    <input type="text" name="title" placeholder="Event Title" required style="width: 300px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <textarea name="description" placeholder="Description" style="width: 500px; font-size: large; height: 70px; color: black; border-radius: 5px; border-color: #cacad7; border: #9099a6;"></textarea><br><br>
+    <input type="date" name="date" required style="width: 300px; height: 20px;font-size: medium; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <input type="time" name="time" required style="width: 300px; height: 20px; font-size: medium;color: black;border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <input type="text" name="location" placeholder="Location" required style="width: 300px; font-size: medium;height: 20px; color: black;border-radius: 5px; border-color: #f0f0f2;">
+<input type="file" name="event_image" accept="image/*">
+
+    <h3 style="color: black;">Custom Form Fields</h3>
+    <div id="custom-fields"></div>
+    <button type="button" onclick="addField()"  style="width: 150px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;">+ Add Field</button>
+
+    <br><br>
+    <button type="submit" style="width: 300px; height: 30px; background-color: blue; color: black; border-radius: 5px; border-color: #f0f0f2;font-size: medium;">Create Event</button>
+</form>
+                    
+                   
+                </div>
+                <div class="profile-section" id="bookings-section" style="display: none;">
+                    <h2>Bookings</h2>
+                    <p>Your bookings will appear here.</p>
+                </div>
+                <div class="profile-section" id="bookings-section" style="display: none;">
+                    <h2>Bookings</h2>
+                    <p>Your bookings will appear here.</p>
+                </div>
+                
+                    
+
+                </div>
+            </div>
+        </div>
+        <style>
+            .main-content {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                padding: 30px;
+                gap: 30px;
+                align-items: flex-start;
+            }
+
+            .profile-section {
+                width: 700px;
+                height: 400px;
+                background-color: #f4f4f4;
+                border-radius: 16px;
+                text-align: center;
+                padding: 25px 20px;
+                box-shadow: 0 4px 18px rgba(0, 0, 0, .08);
+                margin: 40px auto 20px auto;
+                color: white;
+            }
+
+            .profile-section img {
+                width: 110px;
+                height: 110px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .save-btn {
+                margin-top: 18px;
+                padding: 10px 26px;
+                border: none;
+                background-color: #3867d6;
+                color: #fff;
+                border-radius: 40px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+            .for
+        </style>
+
+</body>
+
+</html>

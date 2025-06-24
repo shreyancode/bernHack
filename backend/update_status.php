@@ -9,6 +9,6 @@ $status=($action==="approve")?"approved":"denied";
 $conn->query("update events set status='$status' where id='$event_id'");
 
 }
-header("location: admin.php");
+header("location: /bernhack/frontend/admin1.html");
 exit();
 ?>
