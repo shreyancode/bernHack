@@ -34,7 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $update_stmt->close();
         }
     }
+
 }
+header("location /bernhack/frontend/login.html");
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <form method="POST" action="change_password.php">
+    <form method="POST" action="">
         <h2>Change Password</h2>
         <div class="message"><?= $message ?></div>
         <input type="password" name="current_password" placeholder="Current Password" required>
