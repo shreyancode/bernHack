@@ -6,11 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $pass = $_POST["password"];
-    if (strlen($pass) < 8) {
-
-        echo "password length should be greater than 8";
-        exit();
-    } else {
+     
         $check_sql = "SELECT * FROM users WHERE username = '$username'";
         $check_result = $conn->query($check_sql);
 
@@ -26,6 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: /bernhack/frontend/login.html");
         exit();
 
-    }
+    
 }
 ?>

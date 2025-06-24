@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,20 +12,7 @@
 <body>
     
 
-<form action="/bernhack/backend/host.php" method="POST">
-    <input type="text" name="title" placeholder="Event Title" required>
-    <textarea name="description" placeholder="Description"></textarea>
-    <input type="date" name="date" required>
-    <input type="time" name="time" required>
-    <input type="text" name="location" placeholder="Location" required>
 
-    <h3>Custom Form Fields</h3>
-    <div id="custom-fields"></div>
-    <button type="button" onclick="addField()">+ Add Field</button>
-
-    <br><br>
-    <button type="submit">Create Event</button>
-</form>
 
 <script>
 let fieldCount = 0;
@@ -53,12 +42,13 @@ function addField() {
 }
 </script>
 
+
     <h1>
         Host Dashboard
         <style>
             body {
-                background-color: #222;
-                color: #333;
+                background-color: white;
+                color: black;
                 font-family: Arial, Helvetica, sans-serif;
             }
 
@@ -76,19 +66,20 @@ function addField() {
             <ul class="sidebar-menu">
                 <ul class="sidebar-menu">
                     <li class="active"><a href="#" id="profile-link">Profile</a></li>
-                    <li><a href="create.html">Bookings</a></li>
-                   <li><a href="index.html">View Event</a></li>
-                    <li><a href="logout.html">Logout</a></li>
+                    <li><a href="#">Create Event</a></li>
+                   <li><a href="#">View Event</a></li>
+                   <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Logout</a></li>
                 </ul>
             </ul>
             <style>
                 .sidebar {
                     width: 220px;
-                    height: 450px;
-                    background-color: #333;
+                    height: 500px;
+                    background-color: #f4f4f4;
                     padding: 25px 20px;
                     box-shadow: 2px 0 12px rgba(0, 0, 0, .05);
-                    color: white;
+                    color: black;
                 }
 
                 .sidebar-menu {
@@ -118,7 +109,7 @@ function addField() {
             </style>
         </div>
         <script>
-            // Sidebar active state
+        
             document.querySelectorAll('.sidebar-menu li').forEach(item => {
                 item.addEventListener('click', function () {
                     document.querySelectorAll('.sidebar-menu li').forEach(li => li.classList.remove('active'));
@@ -134,17 +125,30 @@ function addField() {
                 document.getElementById('settings-section').style.display = 'none';
             };
         </script>
+        
         <div class="main-content">
             <div class="main-content">
                 <div class="profile-section" id="profile-section" style="display: block;">
-                    <img src="/bernhack/image/pp.jpeg" alt="Profile">
-    
-        <p><strong>Name:</strong>John</p>
-        <p><strong>Email:</strong>John@gmail.com</p>
-        <p><strong>Organization:</strong>H-IT</p>
-        <p><strong>Since:</strong>2007/jun</p>
                     
-                    <button class="save-btn">Save Changes</button>
+    
+       <form action="/bernhack/backend/host.php" method="POST">
+        
+                    
+    <input type="text" name="title" placeholder="Event Title" required style="width: 300px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <textarea name="description" placeholder="Description" style="width: 500px; font-size: large; height: 70px; color: black; border-radius: 5px; border-color: #cacad7; border: #9099a6;"></textarea><br><br>
+    <input type="date" name="date" required style="width: 300px; height: 20px;font-size: medium; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <input type="time" name="time" required style="width: 300px; height: 20px; font-size: medium;color: black;border-radius: 5px; border-color: #f0f0f2;"><br><br>
+    <input type="text" name="location" placeholder="Location" required style="width: 300px; font-size: medium;height: 20px; color: black;border-radius: 5px; border-color: #f0f0f2;">
+
+    <h3 style="color: black;">Custom Form Fields</h3>
+    <div id="custom-fields"></div>
+    <button type="button" onclick="addField()"  style="width: 150px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;">+ Add Field</button>
+
+    <br><br>
+    <button type="submit" style="width: 300px; height: 30px; background-color: blue; color: black; border-radius: 5px; border-color: #f0f0f2;font-size: medium;">Create Event</button>
+</form>
+                    
+                   
                 </div>
                 <div class="profile-section" id="bookings-section" style="display: none;">
                     <h2>Bookings</h2>
@@ -172,8 +176,8 @@ function addField() {
 
             .profile-section {
                 width: 700px;
-                height: 350px;
-                background-color: #333;
+                height: 400px;
+                background-color: #f4f4f4;
                 border-radius: 16px;
                 text-align: center;
                 padding: 25px 20px;
@@ -199,6 +203,7 @@ function addField() {
                 font-weight: 600;
                 cursor: pointer;
             }
+            .for
         </style>
 
 </body>

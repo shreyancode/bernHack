@@ -20,24 +20,25 @@ $conn = connect();
             exit();
 
             } elseif ($user['role'] === 'host') {
-                header("location: host.php");
+                header("location: /bernhack/frontend/host.html");
             exit();
 
             } else {
-                header("location: home.php");
+                header("location: /bernhack/homepage/index.html");
             exit();
 
             }
         } else {
-            $error = "incorrect password";
+           echo " $error = incorrect password;";
 
         }
 
 
     } else {
-        $error = "username not found";
+echo " $error=username not found";
     }
 }
 
 
 ?>
+ 

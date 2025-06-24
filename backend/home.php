@@ -5,7 +5,7 @@ $sql="select id,title,description,date,time,location from events where status='a
 $result=$conn->query($sql);
 if($result->num_rows>0){
     while($row=$result->fetch_assoc()){
-        echo "<a href='displayForms.php?event_id=".$row['id']."'>".$row['title']."</a>";
+        echo "<a href='displayForms.php?event_id=".$row['id']."'>".$row['title']."<br>"."</a>";
     }
 }
 else{

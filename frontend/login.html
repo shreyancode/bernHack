@@ -7,21 +7,14 @@
 </head>
 <body>
     <div class="loginbox">
-        <h2 style="font-family: Arial, Helvetica, sans-serif; ">Login</h2>
         <form action="/bernhack/backend/login.php" method="post">
-            <label for="Username">Username</label>
-        <input type="text"  name="username" placeholder="Enter your Name" required>
-        <h1 style="font-family: Arial, Helvetica, sans-serif; text-align: center;  ">Login</h1>
+            <h1 style="font-family: Arial, Helvetica, sans-serif; text-align: center;  ">Login</h1>
         <label for="Username">Username</label>
         <br>
-        <input type="text" name="Username" id="Username" placeholder="Enter your Name" required>
+        <input type="text" name="username" id="Username" placeholder="Enter your Name" required>
         <br><br>
          <label for="Password">Password</label> <br>
         <input type="password" name="password" id="password" placeholder="Password" required><br><br>
-        <button type="submit" >login</button>
-        <br><br>
-        </form>
-        <a href="forgot.html">Forgot Password</a>
         <button type="submit"
          style="
          background-color: blue;
@@ -35,6 +28,7 @@
         height: 40px;
         transition: background-color 0.3s ease;
         text-align: center;">Login</button>
+        </form>
         <br><br>
         <a href="forgot.html"
         style="align-items: center; 
@@ -46,7 +40,7 @@
             .loginbox {
                 width: 700px;
                 padding: 50px;
-                background-color: #333;
+                background-color: white;
                 border-radius: 10px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 height: 500px;

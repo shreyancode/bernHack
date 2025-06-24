@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $type = $types[$i];
             $is_required = isset($is_reqs[$i]) ? 1 : 0;
 
-            $conn->query("INSERT INTO form_fields(event_id, label, field_type, is_req)
+            $conn->query("INSERT INTO form_fields(event_id, label, field_type, is_required)
                           VALUES('$event_id', '$label', '$type', '$is_required')");
         }
     }
