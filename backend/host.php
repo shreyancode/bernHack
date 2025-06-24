@@ -36,7 +36,8 @@ if (move_uploaded_file($_FILES["event_image"]["tmp_name"], $image_path)) {
         }
     }
 
-    echo "Event and custom form fields created!";
+    echo "<script> alert('Event and custom form fields created!')";
+    header("location:/bernhack/frontend/host1.html");
 }
 
 

@@ -1,336 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
 
     <style>
-        body {
-            background-color: #f4f4f7;
-            color: #333;
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        background-color: #f4f4f7;
+        color: #333;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            color: blue;
-        }
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+        color: blue;
+      }
 
-        .dashboard {
-            display: flex;
-            min-height: 100vh;
-        }
+      .dashboard {
+        display: flex;
+        min-height: 100vh;
+      }
 
-        .sidebar {
-            width: 220px;
-            background-color: #fff;
-            padding: 25px 20px;
-            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            margin: 20px;
-            height: 70vh;
-        }
+      .sidebar {
+        width: 220px;
+        background-color: #fff;
+        padding: 25px 20px;
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        margin: 20px;
+        height: 150vh;
+      }
 
-        .sidebar-menu {
-            list-style: none;
-            padding: 0;
-        }
+      .sidebar-menu {
+        list-style: none;
+        padding: 0;
+      }
 
-        .sidebar-menu li {
-            padding: 12px 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.25s;
-        }
+      .sidebar-menu li {
+        padding: 12px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.25s;
+      }
 
-        .sidebar-menu li:hover,
-        .sidebar-menu li.active {
-            background-color: #f0f0f2;
-            font-weight: 600;
-        }
+      .sidebar-menu li:hover,
+      .sidebar-menu li.active {
+        background-color: #f0f0f2;
+        font-weight: 600;
+      }
 
-        .sidebar-menu a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        .main-content {
-            flex: 1;
-            padding: 30px;
-            align-items: center;
-            text-align: center;
+      .sidebar-menu a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      .main-content {
+        flex: 1;
+        padding: 30px;
+        align-items: center;
+        text-align: center;
+      }
 
-        }
+      .section {
+        display: none;
+      }
 
-        .section {
-            display: none;
-        }
+      .section.show {
+        display: block;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 16px;
+        width: 800px;
+        height: 150vh;
 
-        .section.show {
-            display: block;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            width: 800px;
-            height: 65vh;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      }
 
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-        }
+      .section h2 {
+        margin-top: 0;
+      }
 
-        .section h2 {
-            margin-top: 0;
-        }
+      .chart {
+        width: 100%;
+        height: 300px;
+        position: relative;
+      }
 
-        .chart {
-            width: 100%;
-            height: 300px;
-            position: relative;
-        }
+      canvas#myChart {
+        width: 100% !important;
+        height: 100% !important;
+      }
 
-        canvas#myChart {
-            width: 100% !important;
-            height: 100% !important;
-        }
+      .save-btn {
+        margin-top: 18px;
+        padding: 10px 26px;
+        border: none;
+        background-color: blue;
+        color: #fff;
+        border-radius: 40px;
+        font-weight: 600;
+        cursor: pointer;
+      }
 
-        .save-btn {
-            margin-top: 18px;
-            padding: 10px 26px;
-            border: none;
-            background-color: blue;
-            color: #fff;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .icon-large {
-            font-size: 70px;
-            color: #ff914d;
-        }
+      .icon-large {
+        font-size: 70px;
+        color: #ff914d;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Admin Dashboard</h1>
 
     <div class="dashboard">
-        <div class="sidebar">
-            <ul class="sidebar-menu">
-                <li class="active"><a href="#" data-section="Profile">Profile</a></li>
-                <li><a href="#" data-section="Analysis">Analysis</a></li>
-                <li><a href="#" data-section="Approve">Approvals</a></li>
-               
-            </ul>
-              <ul class="sidebar-eve">
-             <li><a href="/bernhack/homepage/index.html" data-section="Events">View Event</a></li>
-                </ul>
-                <ul class="sidebar-host">
-                     <li><a href="/bernhack/backend/makeHost.php" data-section="Host">Make Host</a></li>
-                </ul>
-            <style>
-                  .sidebar-host{
-                     list-style: none;
-                     padding: 0;
-            
-                }
-                .sidebar-host li {
+      <div class="sidebar">
+        <ul class="sidebar-menu">
+          <li class="active"><a href="#" data-section="Profile">Profile</a></li>
+          <li><a href="#" data-section="Analysis">Analysis</a></li>
+          <li><a href="#" data-section="Approve">Approvals</a></li>
+        </ul>
+        <ul class="sidebar-eve">
+          <li>
+            <a href="/bernhack/homepage/index.html" data-section="Events"
+              >View Event</a
+            >
+          </li>
+        </ul>
+        <ul class="sidebar-host">
+          <li>
+            <a href="/bernhack/backend/makeHost.php" data-section="Host"
+              >Make Host</a
+            >
+          </li>
+        </ul>
+        <style>
+          .sidebar-host {
+            list-style: none;
+            padding: 0;
+          }
+          .sidebar-host li {
             padding: 12px 14px;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.25s;
             margin-top: -20px;
-        }
-        .sidebar-host li:hover,
-        .sidebar-host li.active {
+          }
+          .sidebar-host li:hover,
+          .sidebar-host li.active {
             background-color: #f0f0f2;
             font-weight: 600;
-        }
+          }
 
-        .sidebar-host a {
+          .sidebar-host a {
             text-decoration: none;
             color: inherit;
             display: block;
-        }
-                .sidebar-eve{
-                     list-style: none;
-                     padding: 0;
-            
-                }
-                .sidebar-eve li {
+          }
+          .sidebar-eve {
+            list-style: none;
+            padding: 0;
+          }
+          .sidebar-eve li {
             padding: 12px 14px;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.25s;
             margin-top: -20px;
-        }
-        .sidebar-eve li:hover,
-        .sidebar-eve li.active {
+          }
+          .sidebar-eve li:hover,
+          .sidebar-eve li.active {
             background-color: #f0f0f2;
             font-weight: 600;
-        }
+          }
 
-        .sidebar-eve a {
+          .sidebar-eve a {
             text-decoration: none;
             color: inherit;
             display: block;
-        }
+          }
 
-                .sidebar-log{
-                    list-style: none;
-                     padding: 0;
-            
-                }
-                 .sidebar-log li {
+          .sidebar-log {
+            list-style: none;
+            padding: 0;
+          }
+          .sidebar-log li {
             padding: 12px 14px;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.25s;
             margin-top: -20px;
-        }
+          }
 
-        .sidebar-log li:hover,
-        .sidebar-log li.active {
+          .sidebar-log li:hover,
+          .sidebar-log li.active {
             background-color: #f0f0f2;
             font-weight: 600;
-        }
+          }
 
-        .sidebar-log a {
+          .sidebar-log a {
             text-decoration: none;
             color: inherit;
             display: block;
-        }
+          }
+        </style>
 
-            </style>
+        <ul class="sidebar-log">
+          <li><a href="/bernhack/backend/logout.php">Logout</a></li>
+        </ul>
+      </div>
 
-            <ul class="sidebar-log">
-                <li><a href="/bernhack/backend/logout.php">Logout</a></li>
-            </ul>
-           
-      
-          
+      <div class="main-content">
+        <div id="Profile" class="section show">
+          <i class="fa-solid fa-circle-user icon-large"></i>
+          <h2>Admin Name</h2>
+          <button class="save-btn">Save Changes</button>
         </div>
 
-        <div class="main-content">
-            <div id="Profile" class="section show">
-                <i class="fa-solid fa-circle-user icon-large"></i>
-                <h2>Admin Name</h2>
-                <button class="save-btn">Save Changes</button>
-            </div>
-
-            <div id="Analysis" class="section">
-                <h2>Welcome to the Analysis</h2>
-                <div class="chart">
-                    <canvas id="submissionsChart"></canvas>
-                </div>
-            </div>
-<div id="Approve" class="section">
-    <h2>Pending Events</h2>
-    <div id="pending-events"></div>
-</div>
-
-
-            <div id="Events" class="section">
-                <h2>Event View</h2>
-                <p>See the event details here.</p>
-            </div>
-
-            <div id="Host" class="section">
-                <h2>Welcome to the Host</h2>
-                <p>Manage all the host users here.</p>
-            </div>
-
-
+        <div id="Analysis" class="section">
+          <h2>Welcome to the Analysis</h2>
+          <div class="chart">
+            <canvas id="submissionsChart"></canvas>
+          </div>
         </div>
+        <div id="Approve" class="section">
+          <h2>Pending Events</h2>
+          <div id="pending-events"></div>
+        </div>
+
+        <div id="Events" class="section">
+          <h2>Event View</h2>
+          <p>See the event details here.</p>
+        </div>
+
+        <div id="Host" class="section">
+          <h2>Welcome to the Host</h2>
+          <p>Manage all the host users here.</p>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        const menuItems = document.querySelectorAll('.sidebar-menu li');
-        const sections = document.querySelectorAll('.section');
+      const menuItems = document.querySelectorAll(".sidebar-menu li");
+      const sections = document.querySelectorAll(".section");
 
-
-        function showSection(sectionId) {
-            sections.forEach(sec => {
-                sec.classList.remove('show');
-            });
-            const target = document.getElementById(sectionId);
-            if (target) {
-                target.classList.add('show');
-            }
-    if (sectionId === 'Approve') {
-        fetch('/bernhack/backend/admin.php')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('pending-events').innerHTML = data;
-            })
-           
-    }
-            if (sectionId === 'Analysis') {
-                fetch("/bernhack/backend/get_chart_data.php")
-                .then(response => response.json())
-      .then(data => {
-        const titles = data.map(item => item.title);
-        const counts = data.map(item => item.submission_count);
-                const ctx = document.getElementById('submissionsChart');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                             labels: titles,
-                       
-                        datasets: [{
-                            data: counts,
-                            backgroundColor: '#ff914d',
-                            borderColor: '#ff914d',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                suggestedMax:10,
-                                ticks:{
-                                    stepSize:2
-                                },
-                                 title: {
-                  display: true,
-                  text: 'Number of Submissions'
-                            }
-                        },
-                        x:{
-                           title: {
-                  display: true,
-                  text: 'Event Titles'
-                           }
-                        }
-                        }
-                    }
-                
-      });
-             
-            });
-        }  
-    }
-
-        menuItems.forEach(item => {
-            item.addEventListener('click', function (e) {
-                e.preventDefault();
-                menuItems.forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-
-                const sectionId = this.querySelector('a').dataset.section;
-                showSection(sectionId);
-            });
+      function showSection(sectionId) {
+        sections.forEach((sec) => {
+          sec.classList.remove("show");
         });
-    </script>
-</body>
+        const target = document.getElementById(sectionId);
+        if (target) {
+          target.classList.add("show");
+        }
+        if (sectionId === "Approve") {
+          fetch("/bernhack/backend/admin.php")
+            .then((response) => response.text())
+            .then((data) => {
+              document.getElementById("pending-events").innerHTML = data;
+            });
+        }
+        if (sectionId === "Analysis") {
+          fetch("/bernhack/backend/get_chart_data.php")
+            .then((response) => response.json())
+            .then((data) => {
+              const titles = data.map((item) => item.title);
+              const counts = data.map((item) => item.submission_count);
+              const ctx = document.getElementById("submissionsChart");
+              new Chart(ctx, {
+                type: "bar",
+                data: {
+                  labels: titles,
 
+                  datasets: [
+                    {
+                      data: counts,
+                      backgroundColor: "#ff914d",
+                      borderColor: "#ff914d",
+                      borderWidth: 1,
+                    },
+                  ],
+                },
+                options: {
+                  maintainAspectRatio: false,
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                      suggestedMax: 10,
+                      ticks: {
+                        stepSize: 2,
+                      },
+                      title: {
+                        display: true,
+                        text: "Number of Submissions",
+                      },
+                    },
+                    x: {
+                      title: {
+                        display: true,
+                        text: "Event Titles",
+                      },
+                    },
+                  },
+                },
+              });
+            });
+        }
+      }
+
+      menuItems.forEach((item) => {
+        item.addEventListener("click", function (e) {
+          e.preventDefault();
+          menuItems.forEach((i) => i.classList.remove("active"));
+          this.classList.add("active");
+
+          const sectionId = this.querySelector("a").dataset.section;
+          showSection(sectionId);
+        });
+      });
+    </script>
+  </body>
 </html>

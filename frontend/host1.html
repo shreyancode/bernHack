@@ -34,7 +34,7 @@
             box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
             border-radius: 10px;
             margin: 20px;
-            height: 70vh;
+            height: 150vh;
         }
 
         .sidebar-menu {
@@ -78,7 +78,7 @@
             padding: 30px;
             border-radius: 16px;
             width: 800px;
-            height: 65vh;
+            height: 150vh;
 
             box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
         }
@@ -234,24 +234,94 @@ const sections = document.querySelectorAll('.section');
              const createSection = document.getElementById("create");
     createSection.innerHTML =    `
         
+    <style>
+        /* FORM CONTAINER */
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* FORM ELEMENTS */
+form input[type="text"],
+form input[type="date"],
+form input[type="time"],
+form input[type="file"],
+form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #3b82f6;
+    background-color: #fff;
+    outline: none;
+}
+
+/* HEADINGS */
+form h3 {
+    margin: 20px 0 10px;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+/* CUSTOM FIELDS SECTION */
+#custom-fields > div {
+    background-color: #f1f5f9;
+    border-left: 4px solid #3b82f6;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+}
+
+/* BUTTONS */
+form button {
+    background-color: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #2563eb;
+}
+
+
+        </style>
            
         
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="/bernhack/backend/host.php" method="POST" enctype="multipart/form-data">
         
                     
-    <input type="text" name="title" placeholder="Event Title" required style="width: 300px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
-    <textarea name="description" placeholder="Description" style="width: 500px; font-size: large; height: 70px; color: black; border-radius: 5px; border-color: #cacad7; border: #9099a6;"></textarea><br><br>
-    <input type="date" name="date" required style="width: 300px; height: 20px;font-size: medium; color: black; border-radius: 5px; border-color: #f0f0f2;"><br><br>
-    <input type="time" name="time" required style="width: 300px; height: 20px; font-size: medium;color: black;border-radius: 5px; border-color: #f0f0f2;"><br><br>
-    <input type="text" name="location" placeholder="Location" required style="width: 300px; font-size: medium;height: 20px; color: black;border-radius: 5px; border-color: #f0f0f2;">
+    <input type="text" name="title" placeholder="Event Title" required ><br><br>
+    <textarea name="description" placeholder="Description" ></textarea><br><br>
+    <input type="date" name="date" required ><br><br>
+    <input type="time" name="time" required ><br><br>
+    <input type="text" name="location" placeholder="Location" required >
 <input type="file" name="event_image" accept="image/*">
 
-    <h3 style="color: black;">Custom Form Fields</h3>
+    <h3>Custom Form Fields</h3>
     <div id="custom-fields"></div>
-    <button type="button" onclick="addField()"  style="width: 150px;font-size: medium; height: 20px; color: black; border-radius: 5px; border-color: #f0f0f2;">+ Add Field</button>
+    <button type="button" onclick="addField()" >+ Add Field</button>
 
     <br><br>
-    <button type="submit" onclick="message()" style="width: 300px; height: 30px; background-color: blue; color: black; border-radius: 5px; border-color: #f0f0f2;font-size: medium;">Create Event</button>
+    <button type="submit" onclick="message()" >Create Event</button>
 </form>
               `  
            
