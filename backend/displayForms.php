@@ -53,6 +53,7 @@ echo "<div class='button'><button type='submit'>Submit</button></div>";
     echo "<p>No form fields for this event.</p>";
 }
 echo "</div>";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
